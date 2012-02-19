@@ -28,7 +28,7 @@ The script can be run by typing the following command in a command window
 * __password__ is the BARD password
 * __date__ is the, optional, date to use to filter the results Example: 2-17-2012
 
-An alternative on Unix/Linux is to use the getBook.sh bash script. This script
+An alternative on Unix/Linux is to use the getBooks.sh bash script. This script
 will prompt for the 4 parameters and then call the GetBooks.groovy script.
 
 Outcome
