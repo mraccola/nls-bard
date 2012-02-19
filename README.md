@@ -43,9 +43,3 @@ can safely ignore. The warning message looks like this:
 
     Feb 18, 2012 10:39:20 PM groovyx.net.http.ParserRegistry getAt
     WARNING: Cannot find parser for content-type: application/x-download -- using default parser.
-
-If the username and password are invalid or missing the script will appear to
-execute properly and all the files will be created. However, the contents of
-each file will be invalid. You will know this has occurred if the script
-executes abnormally fast and you do not see the warning message mentioned above
-at all.

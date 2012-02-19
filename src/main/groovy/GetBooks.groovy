@@ -37,7 +37,7 @@ def http = new HTTPBuilder( "https://nlsbard.loc.gov/cgi-bin/nlsbardprod/" )
 login(http, username, password)
 
 def bookCount = bookNums.size()
-bookNums[0..1].eachWithIndex  { bookNum, i ->
+bookNums.eachWithIndex  { bookNum, i ->
 	println "Downloading book ${i + 1} of ${bookCount} with number ${bookNum}..."
 	download(http, bookNum.toString())
 }
@@ -77,6 +77,7 @@ def login(http, username, password) {
 			body: postBody,
 			requestContentType: URLENC
 			) {resp, reader ->
+			    assert !reader.text().contains("Login attempt has failed") : "Login failed"
 				assert resp.statusLine.statusCode == 200
 			}
 }
