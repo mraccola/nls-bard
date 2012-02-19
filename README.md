@@ -1,6 +1,7 @@
 Overview
 ========
-The GetBooks.groovy script is located in src/main/groovy.
+This project consists of one Groovy script (GetBooks.groovy) that is used to 
+download books from the BARD service.
 
 The script will download all the books going N number of days back and
 optionally filter the result to only books for a certain day. The script will
@@ -22,10 +23,10 @@ The script can be run by typing the following command in a command window
 
     groovy GetBooks.groovy daysBack username password [date in format MM-dd-yyyy]
 
-daysBack is an integer specifying the number of days back to use in the query
-username is the BARD username
-password is the BARD password
-date is the, optional, date to use to filter the results Example: 2-17-2012
+* __daysBack__ is an integer specifying the number of days back to use in the query
+* __username__ is the BARD username
+* __password__ is the BARD password
+* __date__ is the, optional, date to use to filter the results Example: 2-17-2012
 
 An alternative on Unix/Linux is to use the getBook.sh bash script. This script
 will prompt for the 4 parameters and then call the GetBooks.groovy script.
