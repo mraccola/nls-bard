@@ -29,17 +29,17 @@ if (args.length > 3 && args[3] != null && args[3].trim().length() > 0) {
 }
 
 println "Requesting list of books for past ${daysBack} days..."
-def bookNums = fetchBooks(queryBooksUrlTemplate, daysBack, dateFilter)
-println "Found ${bookNums.size()} matching criteria."
+def books = fetchBooks(queryBooksUrlTemplate, daysBack, dateFilter)
+println "Found ${books.size()} matching criteria."
 
 def http = new HTTPBuilder( "https://nlsbard.loc.gov/cgi-bin/nlsbardprod/" )
 
 login(http, username, password)
 
-def bookCount = bookNums.size()
-bookNums.eachWithIndex  { bookNum, i ->
-	println "Downloading book ${i + 1} of ${bookCount} with number ${bookNum}..."
-	download(http, bookNum.toString())
+def bookCount = books.size()
+books.eachWithIndex  { book, i ->
+	println "Downloading book ${i + 1} of ${bookCount} with number ${book[0]} and title ${book[1]}..."
+	download(http, book)
 }
 
 println "Finished downloading all books."
@@ -59,7 +59,8 @@ def fetchBooks(queryBooksUrlTemplate, daysBack, dateFilter) {
 
 	def filteredBooks = dateFilter != null ? xml.book.findAll{it.date.equals(dateFilter)} : xml.book
 	def bookNums = filteredBooks.collect { book ->
-		book[0].children.find {it instanceof String}.trim().reverse()
+		def bookNum = book[0].children.find {it instanceof String}.trim().reverse()
+		[bookNum, book.title]
 	}
 }
 
@@ -86,14 +87,14 @@ def login(http, username, password) {
  * Download a book from the supplied address
  * 
  * @param http the HTTPBuilder to use
- * @param bookNum the book number
+ * @param book the book
  */
-def download(http, bookNum) {
-	def file = new FileOutputStream("${bookNum}.zip")
+def download(http, book) {
+	def file = new FileOutputStream("${book[1]}.zip")
 	def out = new BufferedOutputStream(file)
 	http.get(
 			path: 'downloadbook.cgi',
-			query: [book: bookNum]) { resp, reader ->
+			query: [book: book[0].toString()]) { resp, reader ->
 				assert resp.statusLine.statusCode == 200
 				out << reader
 			}
