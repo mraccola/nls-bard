@@ -34,7 +34,8 @@ will prompt for the 4 parameters and then call the GetBooks.groovy script.
 Outcome
 =======
 The script will create one ZIP file in the current directory for each book.
-The name of the file will be the book number. Example: 39772.zip.
+The name of the file will be the book's title number. 
+Example: War and Peace.zip
 
 Known Issues	
 ============
