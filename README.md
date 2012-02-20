@@ -36,7 +36,7 @@ Outcome
 The script will create one ZIP file in the current directory for each book.
 The name of the file will be the book number. Example: 39772.zip.
 
-Known Issues
+Known Issues	
 ============
 A warning message will be printed for each book. This is expected behavior. You
 can safely ignore. The warning message looks like this:
