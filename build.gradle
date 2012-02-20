@@ -1,0 +1,11 @@
+group = 'com.accola'
+version = '1.0.1'
+
+apply plugin: 'base'
+
+task myZip(type: Zip) {
+	from 'src/main/groovy'
+	from 'src/main/scripts'
+}
+
+artifacts { archives myZip }
