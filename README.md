@@ -38,8 +38,4 @@ The name of the file will be the book number. Example: 39772.zip.
 
 Known Issues	
 ============
-A warning message will be printed for each book. This is expected behavior. You
-can safely ignore. The warning message looks like this:
-
-    Feb 18, 2012 10:39:20 PM groovyx.net.http.ParserRegistry getAt
-    WARNING: Cannot find parser for content-type: application/x-download -- using default parser.
+Please see (https://github.com/mraccola/nls-bard/issues/) for Issue list.
